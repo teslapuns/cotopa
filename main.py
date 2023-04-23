@@ -17,6 +17,9 @@ conn.execute('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOIN
 
 @bot.on.chat_message()
 async def handle_message(message: Message):
+    if (len(message.text) > 30):
+        return
+    
     global counter
 
     with sqlite3.connect('messages.db') as conn:
